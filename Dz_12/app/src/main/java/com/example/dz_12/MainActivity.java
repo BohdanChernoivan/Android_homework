@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 textView.setText(R.string.second);
-                textView.setTextSize(20);
+                textView.setTextSize(25);
             }
         });
     }
