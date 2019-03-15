@@ -37,9 +37,15 @@ public class ArrayPicture {
         return arrayList.get(num).hashCode();
     }
 
-    LinkedList getArrayList() {
+    public int getNum() {
+        return num;
+    }
+
+    public LinkedList getArrayList() {
         return arrayList;
     }
 
-
+    public void setArrayList(LinkedList arrayList) {
+        this.arrayList = arrayList;
+    }
 }

@@ -7,12 +7,14 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.Locale;
+import com.example.dz_13.myHelper.Substitution;
+
 
 
 public class MainActivity extends AppCompatActivity {
 
     private int[] objects = {R.drawable.billposter, R.drawable.blade, R.drawable.elementor, R.drawable.jester, R.drawable.knight, R.drawable.psykeeper, R.drawable.ranger, R.drawable.ringmaster};
+    Substitution s = new Substitution();
     ImageView imageView;
     Button buttonLeft;
     Button buttonRight;
@@ -27,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         final ArrayPicture arrayPicture = new ArrayPicture(objects);
 
         imageView = findViewById(R.id.imageView);
@@ -36,10 +37,12 @@ public class MainActivity extends AppCompatActivity {
         leftView = findViewById(R.id.imageViewL);
         rightView = findViewById(R.id.imageViewR);
 
-        imageView.setImageDrawable(getDrawable(arrayPicture.getArrayList().get(0).hashCode()));
 
-        substutition(leftView, lView);
-        substutition(rightView,rView);
+        saveImage(imageView, arrayPicture);
+
+
+        s.substitution(leftView, lView);
+        s.substitution(rightView, rView);
 
 
         buttonLeft.setOnClickListener(new View.OnClickListener() {
@@ -47,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 imageView.setImageDrawable(getDrawable(arrayPicture.getPreviousPicture()));
                 lView++;
-                substutition(leftView, lView);
+                s.substitution(leftView, lView);
             }
         });
 
@@ -56,19 +59,20 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 imageView.setImageDrawable(getDrawable(arrayPicture.getNextPicture()));
                 rView++;
-                substutition(rightView,rView);
+                s.substitution(rightView, rView);
             }
         });
     }
 
-    protected void substutition(TextView textView, int i) {
-        textView.setText(String.format(Locale.getDefault(), "%d", i));
+    protected void saveImage(ImageView imageView, ArrayPicture arrayPicture) {
+        imageView.setImageDrawable(getDrawable(arrayPicture.getArrayList().get(arrayPicture.getNum()).hashCode()));
     }
+
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putInt("L",lView);
+        outState.putInt("L", lView);
         outState.putInt("R", rView);
     }
 
