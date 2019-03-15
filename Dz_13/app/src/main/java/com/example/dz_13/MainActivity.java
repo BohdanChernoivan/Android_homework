@@ -7,6 +7,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.Locale;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,8 +18,9 @@ public class MainActivity extends AppCompatActivity {
     Button buttonRight;
     TextView leftView;
     TextView rightView;
-    static int lView = 0;
-    static int rView = 0;
+    private static int lView = 0;
+    private static int rView = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,19 +31,22 @@ public class MainActivity extends AppCompatActivity {
         final ArrayPicture arrayPicture = new ArrayPicture(objects);
 
         imageView = findViewById(R.id.imageView);
-        imageView.setImageDrawable(getDrawable(arrayPicture.getArrayList().get(0).hashCode()));
         buttonLeft = findViewById(R.id.leftButton);
         buttonRight = findViewById(R.id.rightButton);
         leftView = findViewById(R.id.imageViewL);
         rightView = findViewById(R.id.imageViewR);
 
+        imageView.setImageDrawable(getDrawable(arrayPicture.getArrayList().get(0).hashCode()));
+
+        leftView.setText(String.format(Locale.getDefault(), "%d", lView));
+        rightView.setText(String.format(Locale.getDefault(), "%d", rView));
 
         buttonLeft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 imageView.setImageDrawable(getDrawable(arrayPicture.getPreviousPicture()));
                 lView++;
-                leftView.setText(Integer.toString(lView));
+                leftView.setText(String.format(Locale.getDefault(), "%d", lView));
             }
         });
 
@@ -49,8 +55,23 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 imageView.setImageDrawable(getDrawable(arrayPicture.getNextPicture()));
                 rView++;
-                rightView.setText(Integer.toString(rView));
+                rightView.setText(String.format(Locale.getDefault(), "%d", rView));
             }
         });
+
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("L",lView);
+        outState.putInt("R", rView);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        lView = savedInstanceState.getInt("L");
+        rView = savedInstanceState.getInt("R");
     }
 }
