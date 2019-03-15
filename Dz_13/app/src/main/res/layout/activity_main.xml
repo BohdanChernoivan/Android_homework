@@ -12,13 +12,26 @@
         android:layout_height="70dp"
         android:layout_gravity="left|bottom"
         android:text="@string/leftButton"
-        android:textColor="@color/colorAccent" />
+        android:textColor="@color/colorRed" />
+
+    <TextView
+        android:id="@+id/imageViewL"
+        android:layout_width="56dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/elementor" />
+        android:layout_width="170dp"
+        android:layout_height="290dp"
+        android:layout_gravity="center"
+        android:src="@drawable/blade" />
+
+    <TextView
+        android:id="@+id/imageViewR"
+        android:layout_width="56dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center" />
 
     <Button
         android:id="@+id/rightButton"
@@ -26,7 +39,7 @@
         android:layout_height="70dp"
         android:layout_gravity="right|bottom"
         android:text="@string/rightButton"
-        android:textColor="@color/colorPrimaryDark" />
+        android:textColor="@color/colorBlue" />
 
 
 </LinearLayout>

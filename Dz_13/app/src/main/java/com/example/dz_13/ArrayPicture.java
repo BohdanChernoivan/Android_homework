@@ -4,15 +4,42 @@ import java.util.LinkedList;
 
 public class ArrayPicture {
 
-    LinkedList arrayList = new LinkedList();
+    private LinkedList arrayList = new LinkedList();
+    private static int num = 0;
 
-    public ArrayPicture(int[] pg) {
-        for (int i = 0; i < pg.length; i++) {
-            arrayList.add(pg[i]);
+    ArrayPicture(int[] pg) {
+        for (int x : pg) {
+            arrayList.add(x);
         }
     }
 
-    public LinkedList getArrayList() {
+    public int getNextPicture() {
+        setNext();
+        return arrayList.get(num).hashCode();
+    }
+
+    private void setNext() {
+        num++;
+        if (num > arrayList.size() - 1) {
+            num = 0;
+        }
+    }
+
+    private void setPrevious() {
+        num--;
+        if (num < 0) {
+            num = arrayList.size() - 1;
+        }
+    }
+
+    public int getPreviousPicture() {
+        setPrevious();
+        return arrayList.get(num).hashCode();
+    }
+
+    LinkedList getArrayList() {
         return arrayList;
     }
+
+
 }
