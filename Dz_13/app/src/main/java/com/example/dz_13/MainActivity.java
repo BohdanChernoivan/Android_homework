@@ -38,15 +38,16 @@ public class MainActivity extends AppCompatActivity {
 
         imageView.setImageDrawable(getDrawable(arrayPicture.getArrayList().get(0).hashCode()));
 
-        leftView.setText(String.format(Locale.getDefault(), "%d", lView));
-        rightView.setText(String.format(Locale.getDefault(), "%d", rView));
+        substutition(leftView, lView);
+        substutition(rightView,rView);
+
 
         buttonLeft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 imageView.setImageDrawable(getDrawable(arrayPicture.getPreviousPicture()));
                 lView++;
-                leftView.setText(String.format(Locale.getDefault(), "%d", lView));
+                substutition(leftView, lView);
             }
         });
 
@@ -55,10 +56,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 imageView.setImageDrawable(getDrawable(arrayPicture.getNextPicture()));
                 rView++;
-                rightView.setText(String.format(Locale.getDefault(), "%d", rView));
+                substutition(rightView,rView);
             }
         });
+    }
 
+    protected void substutition(TextView textView, int i) {
+        textView.setText(String.format(Locale.getDefault(), "%d", i));
     }
 
     @Override
