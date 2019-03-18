@@ -19,6 +19,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:baselineAligned="false"
         android:layout_width="match_parent"
         android:layout_height="146dp"
         android:orientation="horizontal">
@@ -30,18 +31,18 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/sfinksB"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:text="Button" />
+                android:text="@string/Sfinks" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/persianB"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:text="Button" />
+                android:text="@string/Persian" />
         </LinearLayout>
 
         <LinearLayout
@@ -51,18 +52,18 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/button4"
+                android:id="@+id/himalayanB"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:text="Button" />
+                android:text="@string/Himalayan" />
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/scottishFoldB"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:text="Button" />
+                android:text="@string/ScottishFold" />
         </LinearLayout>
 
     </LinearLayout>
@@ -75,7 +76,7 @@
             android:id="@+id/button5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:text="@string/ReceiveCat" />
     </FrameLayout>
 
 
