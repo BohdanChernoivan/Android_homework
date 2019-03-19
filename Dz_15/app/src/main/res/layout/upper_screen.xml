@@ -35,6 +35,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:onClick="onClick"
                 android:text="@string/Sfinks" />
 
             <Button
@@ -42,6 +43,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:onClick="onClick"
                 android:text="@string/Persian" />
         </LinearLayout>
 
@@ -56,6 +58,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:onClick="onClick"
                 android:text="@string/Himalayan" />
 
             <Button
@@ -63,6 +66,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:onClick="onClick"
                 android:text="@string/ScottishFold" />
         </LinearLayout>
 

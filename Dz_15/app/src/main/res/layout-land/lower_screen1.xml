@@ -53,6 +53,8 @@
         android:layout_marginTop="48dp"
         android:gravity="center"
         android:text="@string/Breed"
+        android:textColor="@color/colorAccent"
+        android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />

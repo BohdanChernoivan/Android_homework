@@ -49,6 +49,8 @@
         android:layout_marginEnd="15dp"
         android:gravity="center"
         android:text="@string/Breed"
+        android:textColor="@color/colorAccent"
+        android:textSize="30sp"
         app:layout_constraintEnd_toStartOf="@+id/textView3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
