@@ -33,17 +33,14 @@
             <Button
                 android:id="@+id/sfinksB"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:onClick="onClick"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
                 android:text="@string/Sfinks" />
 
             <Button
                 android:id="@+id/persianB"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:onClick="onClick"
+                android:layout_height="wrap_content"
                 android:text="@string/Persian" />
         </LinearLayout>
 
@@ -56,17 +53,14 @@
             <Button
                 android:id="@+id/himalayanB"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:onClick="onClick"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
                 android:text="@string/Himalayan" />
 
             <Button
                 android:id="@+id/scottishFoldB"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:onClick="onClick"
+                android:layout_height="wrap_content"
                 android:text="@string/ScottishFold" />
         </LinearLayout>
 

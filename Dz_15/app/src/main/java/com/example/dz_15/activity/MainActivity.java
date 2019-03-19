@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button sf, pe, hi, sc;
     Button giveBreed;
-    static TakePhoto takePhoto;
+    TakePhoto takePhoto;
 
     static String[] emptyArray = null;
     LinksPhoto linksPhoto = new LinksPhoto();
@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     ImageButton imageButton;
     TextView textView;
     Button butNewCat;
+    private int t = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,12 +54,17 @@ public class MainActivity extends AppCompatActivity {
         hi.setOnClickListener(himalayan);
         sc.setOnClickListener(scottishFold);
 
+        imageButton.setOnClickListener(turn);
+
         giveBreed.setOnClickListener(givingBreed);
         butNewCat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (takePhoto != null)
+                if (takePhoto != null) {
+                    imageView.setRotation(0);
+                    t = 0;
                     takePhoto.getNextPicture();
+                }
             }
         });
 
@@ -103,6 +109,32 @@ public class MainActivity extends AppCompatActivity {
             if (emptyArray != null) {
                 takePhoto = new TakePhoto(imageView, emptyArray);
                 textView.setText(str);
+                imageView.setRotation(0);
+                t = 0;
+            }
+        }
+    };
+
+    View.OnClickListener turn = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            switch (t) {
+                case 0:
+                    imageView.setRotation(90);
+                    t++;
+                    break;
+                case 1:
+                    imageView.setRotation(180);
+                    t++;
+                    break;
+                case 2:
+                    imageView.setRotation(270);
+                    t++;
+                    break;
+                default:
+                    imageView.setRotation(0);
+                    t = 0;
+                    break;
             }
         }
     };
@@ -111,15 +143,36 @@ public class MainActivity extends AppCompatActivity {
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putInt("STR", str);
+        outState.putInt("TRN", t);
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         str = savedInstanceState.getInt("STR");
+        t = savedInstanceState.getInt("TRN");
         if (emptyArray != null) {
             takePhoto = new TakePhoto(imageView, emptyArray);
             textView.setText(str);
+            saveTurn(t);
+        }
+    }
+
+    private void saveTurn(int ok) {
+        switch (ok - 1) {
+            case 0:
+                imageView.setRotation(90);
+                break;
+            case 1:
+                imageView.setRotation(180);
+                break;
+            case 2:
+                imageView.setRotation(270);
+                break;
+            default:
+                imageView.setRotation(0);
+                t = 0;
+                break;
         }
     }
 }
