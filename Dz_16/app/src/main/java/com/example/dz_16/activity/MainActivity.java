@@ -2,42 +2,37 @@ package com.example.dz_16.activity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.GridView;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.TextView;
+
 
 import com.example.dz_16.R;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
 
-    private ImageView imageview;
-    private ImageButton imageButton;
+//    ArrayImage arrayImage = new ArrayImage();
+    ImageGridAdapter gridAdapter = new ImageGridAdapter(this);
+    private Button imageButton;
     private GridView gridView;
-    private static final int REQUEST_IMAGE = 91;
+    private static final int REQUEST_IMAGE = 11;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        imageButton = findViewById(R.id.imageButton);
-        imageview = findViewById(R.id.im1ageView);
-        gridView = findViewById(R.id.gridV);
+        imageButton = findViewById(R.id.selectBtn);
+        gridView = findViewById(R.id.PhoneImageGrid);
+
+
+        gridView.setAdapter(gridAdapter);
+        gridView.invalidateViews();
 
 
         imageButton.setOnClickListener(new View.OnClickListener() {
@@ -49,13 +44,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showFileChooser() {
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        intent.addCategory(Intent.CATEGORY_OPENABLE);
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
         Intent intent1 = Intent.createChooser(intent, "Choose Image");
         startActivityForResult(intent1, REQUEST_IMAGE);
-
     }
 
     @Override
@@ -64,17 +55,8 @@ public class MainActivity extends AppCompatActivity {
 
         if (resultCode == Activity.RESULT_OK) {
             if(requestCode == REQUEST_IMAGE) {
-                InputStream inputStream = null;
-                try {
-                    inputStream = getContentResolver().openInputStream(data.getData());
-                    Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-                    imageview.setImageBitmap(bitmap);
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
-
+                gridAdapter.setUri(data.getData());
             }
-
         }
     }
 }

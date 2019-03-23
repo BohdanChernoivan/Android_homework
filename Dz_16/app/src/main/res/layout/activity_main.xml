@@ -1,51 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="15dp"
-    android:background="@drawable/rect"
-    tools:context=".activity.MainActivity">
+    android:background="@drawable/rect">
 
-
-    <ImageView
-        android:id="@+id/im1ageView"
+    <LinearLayout
+        android:id="@+id/customGalleryFooter"
         android:layout_width="match_parent"
-        android:layout_height="571dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.551"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:src="@tools:sample/avatars" />
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+
+        <Button
+            android:id="@+id/selectBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="200dp"
+            android:text="@string/Select" />
+    </LinearLayout>
 
     <GridView
-        android:id="@+id/gridV"
+        android:id="@+id/PhoneImageGrid"
         android:layout_width="match_parent"
-        android:layout_height="570dp"
-        android:horizontalSpacing="30dp"
+        android:layout_height="match_parent"
+        android:layout_above="@id/customGalleryFooter"
+        android:columnWidth="90dp"
+        android:gravity="center"
+        android:horizontalSpacing="20dp"
         android:numColumns="auto_fit"
-        android:verticalSpacing="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.099" />
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="20dp" />
 
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_add" />
-
-
-
-
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>
