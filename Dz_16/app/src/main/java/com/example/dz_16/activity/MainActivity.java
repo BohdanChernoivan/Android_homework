@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         gridView.setAdapter(gridAdapter);
-        gridView.invalidateViews();
 
 
         imageButton.setOnClickListener(new View.OnClickListener() {
@@ -55,7 +54,11 @@ public class MainActivity extends AppCompatActivity {
 
         if (resultCode == Activity.RESULT_OK) {
             if(requestCode == REQUEST_IMAGE) {
-                gridAdapter.setUri(data.getData());
+                try {
+                    gridAdapter.setUri(data.getData());
+                } catch (NullPointerException e) {
+                }
+                gridView.invalidateViews();
             }
         }
     }
