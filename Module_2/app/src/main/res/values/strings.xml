@@ -3,8 +3,9 @@
     <string name="ChooseYourCat">Choose your cat</string>
     <string name="Select">Select</string>
     <string name="ChooseEnemy">Choose enemy</string>
-    <string name="NAME">Name:</string>
-    <string name="HealthPoint">Health Point:</string>
-    <string name="Damage">Damage:</string>
-    <string name="Defense">Defense:</string>
+    <string name="NAME">Name: %1$s</string>
+    <string name="HealthPoint">Health Point: %1$d</string>
+    <string name="Damage">Damage: %1$d</string>
+    <string name="Defense">Defense: %1$f</string>
+    <string name="ChooseEnemyCAT">Selet enemy cat</string>
 </resources>
