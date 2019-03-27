@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -41,6 +40,8 @@ public class Main2Activity extends AppCompatActivity {
         Intent i = getIntent();
         String photo = i.getStringExtra("photo");
         String name = i.getStringExtra("name");
+//        String number = i.getStringExtra("number");
+
 
 
 

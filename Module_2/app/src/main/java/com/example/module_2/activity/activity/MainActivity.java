@@ -56,14 +56,12 @@ public class MainActivity extends AppCompatActivity {
             button = view.findViewById(R.id.selectEx);
 
             final int finalI = i;
+
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
                     Int(finalI);
-
-//                    cats.getList().remove(finalI);
-
 
                 }
             });
@@ -84,14 +82,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-//    public void onButtonClick(View view) {
-//        switch (view.getId()) {
-//            case R.id.selectEx:
-////                textView.setText("ONE");
-//        Int();
-//        break;
-//    }
-//    }
 
     protected void Int(int o) {
         Intent intent = new Intent(this,Main2Activity.class);
@@ -100,8 +90,4 @@ public class MainActivity extends AppCompatActivity {
 //        intent.putExtra("number", o);
         startActivity(intent);
     }
-//
-//    protected void setData(TextView textView, ) {
-//
-//    }
 }

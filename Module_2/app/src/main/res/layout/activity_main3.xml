@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#DD0D0D"
     tools:context=".activity.activity.Main3Activity">
 
     <TextView
@@ -12,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="56dp"
-        android:background="@color/colorPrimaryDark"
+        android:background="#6B1C1C"
         android:text="@string/ChooseEnemyCAT"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"

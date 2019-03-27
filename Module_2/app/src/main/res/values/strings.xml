@@ -8,4 +8,5 @@
     <string name="Damage">Damage: %1$d</string>
     <string name="Defense">Defense: %1$f</string>
     <string name="ChooseEnemyCAT">Selet enemy cat</string>
+    <string name="StartF">Start Fight</string>
 </resources>
