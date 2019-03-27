@@ -52,7 +52,10 @@ public class Main3Activity extends AppCompatActivity {
 
             final int finalI = i;
 
+            Intent intent = getIntent();
 
+            final String photo = intent.getStringExtra("photo");
+            final String name = intent.getStringExtra("name");
 
             picasso.load(cats.getList().get(i))
                     .placeholder(R.drawable.ic_launcher_foreground)
@@ -67,16 +70,20 @@ public class Main3Activity extends AppCompatActivity {
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Int(finalI);
+                    Int(finalI, photo, name);
                 }
             });
         }
     }
 
-    protected void Int(int m) {
+    protected void Int(int m, String str, String nam) {
         Intent intent = new Intent(this, Main4Activity.class);
+
         intent.putExtra("photo", cats.getList().get(m));
         intent.putExtra("name", catLinks.getNameCat()[m]);
+
+        intent.putExtra("photoEnemy", str);
+        intent.putExtra("myName", nam);
         startActivity(intent);
 
     }

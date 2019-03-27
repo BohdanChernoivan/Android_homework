@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,6 +22,8 @@ public class Main2Activity extends AppCompatActivity {
     private Picasso picasso = Picasso.get();
     CatLinks catLinks;
 
+    Button button;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,14 +35,16 @@ public class Main2Activity extends AppCompatActivity {
         dmg = findViewById(R.id.damage);
         def = findViewById(R.id.defense);
 
+        button = findViewById(R.id.buttonChEnemy);
+
         catLinks = new CatLinks();
 
 
 
 
         Intent i = getIntent();
-        String photo = i.getStringExtra("photo");
-        String name = i.getStringExtra("name");
+        final String photo = i.getStringExtra("photo");
+        final String name = i.getStringExtra("name");
 //        String number = i.getStringExtra("number");
 
 
@@ -63,14 +68,30 @@ public class Main2Activity extends AppCompatActivity {
                 .error(R.drawable.ic_cloud_queue_black_24dp)
                 .into(imageView);
 
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Int(photo, name);
+
+            }
+        });
+
     }
 
-    protected void onClickChoose(View view) {
-        switch (view.getId()) {
-            case R.id.buttonChEnemy:
-                Intent intent = new Intent(this, Main3Activity.class);
-                startActivity(intent);
-
-        }
+    protected void Int(String m, String nam) {
+        Intent i = new Intent(this, Main3Activity.class);
+        i.putExtra("photo", m);
+        i.putExtra("name", nam);
+        startActivity(i);
     }
+
+//    protected void onClickChoose(View view) {
+//        switch (view.getId()) {
+//            case R.id.buttonChEnemy:
+//                Intent intent = new Intent(this, Main3Activity.class);
+//                startActivity(intent);
+//
+//        }
+//    }
 }

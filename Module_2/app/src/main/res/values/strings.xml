@@ -9,4 +9,6 @@
     <string name="Defense">Defense: %1$f</string>
     <string name="ChooseEnemyCAT">Selet enemy cat</string>
     <string name="StartF">Start Fight</string>
+    <string name="myCat">My cat</string>
+    <string name="enemyCat">Enemy Cat</string>
 </resources>
