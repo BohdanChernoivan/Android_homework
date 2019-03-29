@@ -11,10 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.activity.Main4Activity"></activity>
-        <activity android:name=".activity.activity.Main3Activity" />
-        <activity android:name=".activity.activity.Main2Activity" />
-        <activity android:name=".activity.activity.MainActivity">
+        <activity android:name=".activity.activity.CatFight"></activity>
+        <activity android:name=".activity.activity.ShowListEnemyCats" />
+        <activity android:name=".activity.activity.CharacteristicsOfMyCat" />
+        <activity android:name=".activity.activity.ShowListMyCats">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

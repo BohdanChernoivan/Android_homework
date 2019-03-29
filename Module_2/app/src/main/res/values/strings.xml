@@ -6,8 +6,8 @@
     <string name="NAME">Name: %1$s</string>
     <string name="HealthPoint">Health Point: %1$d</string>
     <string name="Damage">Damage: %1$d</string>
-    <string name="Defense">Defense: %1$f</string>
-    <string name="ChooseEnemyCAT">Selet enemy cat</string>
+    <string name="Defense">Defense: %1$d</string>
+    <string name="ChooseEnemyCAT">Select enemy cat</string>
     <string name="StartF">Start Fight</string>
     <string name="myCat">My cat</string>
     <string name="enemyCat">Enemy Cat</string>
