@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Epic Fight</string>
+    <string name="ChooseYourCat">Choose your cat</string>
+    <string name="Select">Select</string>
+    <string name="ChooseEnemy">Choose enemy</string>
+    <string name="NAME">Name: %1$s</string>
+    <string name="HealthPoint">Health Point: %1$d</string>
+    <string name="Damage">Damage: %1$d</string>
+    <string name="Defense">Defense: %1$d</string>
+    <string name="ChooseEnemyCAT">Select enemy cat</string>
+    <string name="StartF">Start Fight</string>
+    <string name="myCat">My cat</string>
+    <string name="enemyCat">Enemy Cat</string>
+</resources>

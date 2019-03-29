@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="7dp"
+        android:layout_marginBottom="7dp"
+        android:gravity="start">
+
+        <ImageView
+            android:layout_width="126dp"
+            android:layout_height="121dp"
+            android:background="#6BB469"
+            android:id="@+id/imageEx"/>
+
+        <TextView
+            android:id="@+id/nameEx"
+            android:layout_width="144dp"
+            android:layout_height="84dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="147dp"
+            android:gravity="start|center"
+            android:text="@string/NAME"
+            android:textSize="17sp" />
+
+        <Button
+            android:id="@+id/selectEx"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="34dp"
+            android:layout_marginEnd="21dp"
+            android:onClick="onButtonClick"
+            android:text="@string/Select" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

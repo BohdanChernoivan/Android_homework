@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Breed Cats</string>
+    <string name="ChooseCatBreed">Choose cat breed:</string>
+    <string name="Himalayan">Himalayan</string>
+    <string name="ScottishFold">Scottish Fold</string>
+    <string name="Persian">Persian</string>
+    <string name="Sfinks">Sfinks</string>
+    <string name="ReceiveCat">Receive cat!</string>
+    <string name="Breed">Breed</string>
+    <string name="NewCat">New Cat</string>
+</resources>
