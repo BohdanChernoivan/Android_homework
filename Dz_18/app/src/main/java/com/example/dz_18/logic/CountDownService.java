@@ -3,7 +3,10 @@ package com.example.dz_18.logic;
 import android.app.IntentService;
 import android.content.Intent;
 
+import com.example.dz_18.data.Counter;
+
 public class CountDownService extends IntentService {
+
 
     public static final String COUNTER_KEY = "CounterTime";
     public static final String COUNT_DOWN_ACTION = ".com.example.dz_18.logic.CountDownService.Action";
@@ -23,7 +26,7 @@ public class CountDownService extends IntentService {
 
 
     private void startCountDown() throws InterruptedException {
-        for (int i = 100; i > 1; i--) {
+        for (int i = Counter.getAnInt(); i > 1; i--) {
             Thread.sleep(500);
             Intent intent = new Intent();
             intent.setAction(COUNT_DOWN_ACTION);

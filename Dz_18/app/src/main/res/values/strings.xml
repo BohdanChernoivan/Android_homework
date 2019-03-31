@@ -5,4 +5,7 @@
     <string name="waitService">waiting...</string>
     <string name="clickOn">Click On!</string>
     <string name="openControl">Открыть контроль</string>
+    <string name="continueCountD">Continue countdown</string>
+    <string name="addYet">+20 yet</string>
+    <string name="iddQd">IddQd</string>
 </resources>

@@ -42,7 +42,9 @@ public class ShowCountDown extends AppCompatActivity implements MainPresenter.Ma
 
         button.setOnClickListener(this::acceptIntentService);
 
-        buttonControl.setOnClickListener(v -> startActivity(createIntent()));
+        buttonControl.setOnClickListener(v ->
+                startActivity(createIntent())
+        );
 
     }
 
@@ -57,8 +59,8 @@ public class ShowCountDown extends AppCompatActivity implements MainPresenter.Ma
 
     @Override
     public Intent createIntent() {
-        Intent intent = new Intent(this, ContinueCountDown.class);
-        return intent;
+        Intent newIntent = new Intent(this, ContinueCountDown.class);
+        return newIntent;
     }
 
     @Override
