@@ -4,4 +4,5 @@
     <string name="count_down">Count down: %1d</string>
     <string name="waitService">waiting...</string>
     <string name="clickOn">Click On!</string>
+    <string name="openControl">Открыть контроль</string>
 </resources>

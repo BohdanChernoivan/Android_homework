@@ -20,6 +20,7 @@ public class ShowCountDown extends AppCompatActivity implements MainPresenter.Ma
 
 
     Button button;
+    Button buttonControl;
     TextView view;
 
     CountDownBroadcastReceiver receiver;
@@ -32,21 +33,32 @@ public class ShowCountDown extends AppCompatActivity implements MainPresenter.Ma
         setContentView(R.layout.activity_main);
 
         button = findViewById(R.id.startCountDown);
+        buttonControl = findViewById(R.id.appearButton);
         view = findViewById(R.id.countDown);
 
         receiver = new CountDownBroadcastReceiver();
 
         mainPresenter = new MainPresenter(this);
 
-        button.setOnClickListener(this::acceptIntent);
+        button.setOnClickListener(this::acceptIntentService);
+
+        buttonControl.setOnClickListener(v -> startActivity(createIntent()));
 
     }
 
 
+
     @Override
-    public void acceptIntent(View view) {
+    public void acceptIntentService(View view) {
         Intent intent = new Intent(this, CountDownService.class);
         startService(intent);
+        buttonControl.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public Intent createIntent() {
+        Intent intent = new Intent(this, ContinueCountDown.class);
+        return intent;
     }
 
     @Override

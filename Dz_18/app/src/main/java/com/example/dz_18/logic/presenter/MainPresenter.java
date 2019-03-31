@@ -1,5 +1,6 @@
 package com.example.dz_18.logic.presenter;
 
+import android.content.Intent;
 import android.view.View;
 
 public class MainPresenter {
@@ -12,7 +13,9 @@ public class MainPresenter {
 
     public interface MainView {
 
-        void acceptIntent(View view);
+        void acceptIntentService(View view);
+
+        Intent createIntent();
 
     }
 }

@@ -8,4 +8,10 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="login_button_text_appearance">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">#B12525</item>
+        <item name="android:textStyle">italic</item>
+    </style>
+
 </resources>

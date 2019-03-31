@@ -30,5 +30,16 @@
         android:id="@+id/startCountDown"
         android:text="@string/clickOn"/>
 
+    <Button
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/appearButton"
+        android:visibility="invisible"
+        android:text="@string/openControl"
+        android:drawableEnd="@drawable/ic_brightness_low_black_24dp"
+        style="@style/login_button_text_appearance">
+    </Button>
+
 
 </LinearLayout>
