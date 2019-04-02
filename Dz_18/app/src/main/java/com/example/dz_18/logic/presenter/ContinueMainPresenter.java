@@ -14,6 +14,6 @@ public class ContinueMainPresenter {
 
         void acceptIntentService();
 
-        void addInt(View view);
+        void addValueTwenty(View view);
     }
 }

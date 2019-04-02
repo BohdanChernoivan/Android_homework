@@ -9,6 +9,6 @@ public class Counter {
     }
 
     public static void setAnInt(int anInt) {
-        Counter.anInt += anInt;
+        Counter.anInt = anInt;
     }
 }

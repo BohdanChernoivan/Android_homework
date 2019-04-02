@@ -11,7 +11,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.dz_18.R;
-import com.example.dz_18.data.Counter;
 import com.example.dz_18.logic.CountDownService;
 import com.example.dz_18.logic.presenter.ContinueMainPresenter;
 
@@ -23,6 +22,7 @@ public class ContinueCountDown extends AppCompatActivity implements ContinueMain
     Button buttonIddQd;
     TextView view;
 
+
     CountDownBroadcastReceiverContinue countDownBroadcastReceiverContinue;
 
     ContinueMainPresenter mainPresenter;
@@ -32,9 +32,7 @@ public class ContinueCountDown extends AppCompatActivity implements ContinueMain
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_continue_count_down);
 
-        buttonAdd = findViewById(R.id.add20);
-        buttonIddQd = findViewById(R.id.iddQd);
-        view = findViewById(R.id.countDownContinue);
+        control();
 
         countDownBroadcastReceiverContinue = new CountDownBroadcastReceiverContinue();
 
@@ -43,20 +41,36 @@ public class ContinueCountDown extends AppCompatActivity implements ContinueMain
         Intent intent = new Intent(this, CountDownService.class);
         startService(intent);
 
-        buttonAdd.setOnClickListener(this::addInt);
+        buttonAdd.setOnClickListener(this::addValueTwenty);
+
+        buttonIddQd.setOnClickListener(this::addIddQd);
 
 
+    }
+
+
+    private void addIddQd(View view) {
+
+    }
+
+    private void control() {
+        buttonAdd = findViewById(R.id.add20);
+        buttonIddQd = findViewById(R.id.iddQd);
+        view = findViewById(R.id.countDownContinue);
     }
 
 
     @Override
     public void acceptIntentService() {
-
+        Intent i = new Intent(this, CountDownService.class);
+        startForegroundService(i);
     }
 
     @Override
-    public void addInt(View view) {
-        Counter.setAnInt(20);
+    public void addValueTwenty(View view) {
+        Intent i = new Intent(this, CountDownService.class);
+        i.putExtra("add20val", 20);
+        startService(i);
     }
 
     @Override

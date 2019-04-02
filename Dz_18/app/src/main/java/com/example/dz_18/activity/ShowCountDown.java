@@ -32,9 +32,7 @@ public class ShowCountDown extends AppCompatActivity implements MainPresenter.Ma
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        button = findViewById(R.id.startCountDown);
-        buttonControl = findViewById(R.id.appearButton);
-        view = findViewById(R.id.countDown);
+        control();
 
         receiver = new CountDownBroadcastReceiver();
 
@@ -46,6 +44,12 @@ public class ShowCountDown extends AppCompatActivity implements MainPresenter.Ma
                 startActivity(createIntent())
         );
 
+    }
+
+    private void control() {
+        button = findViewById(R.id.startCountDown);
+        buttonControl = findViewById(R.id.appearButton);
+        view = findViewById(R.id.countDown);
     }
 
 
