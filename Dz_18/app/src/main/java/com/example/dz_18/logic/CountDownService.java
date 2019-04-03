@@ -1,7 +1,6 @@
 package com.example.dz_18.logic;
 
 import android.app.IntentService;
-import android.content.ComponentName;
 import android.content.Intent;
 import android.widget.Toast;
 

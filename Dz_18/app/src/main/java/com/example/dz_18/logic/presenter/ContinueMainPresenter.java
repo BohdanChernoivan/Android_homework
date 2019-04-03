@@ -12,7 +12,7 @@ public class ContinueMainPresenter {
 
     public interface ContinueView {
 
-        void acceptIntentService();
+        void showNotification(View view);
 
         void addValueTwenty(View view);
     }

@@ -1,5 +1,8 @@
 package com.example.dz_18.activity;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -18,10 +21,13 @@ import static com.example.dz_18.logic.CountDownService.COUNT_DOWN_ACTION;
 
 public class ContinueCountDown extends AppCompatActivity implements ContinueMainPresenter.ContinueView {
 
+    private static final int NOTIFICATION_ID = 101;
+
     Button buttonAdd;
     Button buttonIddQd;
     TextView view;
 
+    private NotificationManager notificationManager;
 
     CountDownBroadcastReceiverContinue countDownBroadcastReceiverContinue;
 
@@ -34,6 +40,8 @@ public class ContinueCountDown extends AppCompatActivity implements ContinueMain
 
         control();
 
+        notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
         countDownBroadcastReceiverContinue = new CountDownBroadcastReceiverContinue();
 
         mainPresenter = new ContinueMainPresenter(this);
@@ -43,15 +51,11 @@ public class ContinueCountDown extends AppCompatActivity implements ContinueMain
 
         buttonAdd.setOnClickListener(this::addValueTwenty);
 
-        buttonIddQd.setOnClickListener(this::addIddQd);
+        buttonIddQd.setOnClickListener(this::showNotification);
 
 
     }
 
-
-    private void addIddQd(View view) {
-
-    }
 
     private void control() {
         buttonAdd = findViewById(R.id.add20);
@@ -61,9 +65,30 @@ public class ContinueCountDown extends AppCompatActivity implements ContinueMain
 
 
     @Override
-    public void acceptIntentService() {
-        Intent i = new Intent(this, CountDownService.class);
-        startForegroundService(i);
+    public void showNotification(View view) {
+
+//        Intent i = new Intent(this, CountDownService.class);
+
+        Intent intent = new Intent(this, ContinueCountDown.class);
+        PendingIntent pt = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+
+        Notification.Builder builder = new Notification.Builder(this)
+                .setSmallIcon(R.drawable.ic_brightness_low_black_24dp)
+//                .setLargeIcon(BitmapFactory.decodeResource(getApplication().getResources(), R.drawable.ic_brightness_low_black_24dp))
+                .setTicker("new notification")
+                .setWhen(System.currentTimeMillis())
+                .setAutoCancel(true)
+                .setContentTitle("Count Down")
+                .setContentText(getString(R.string.iddQd))
+                .setContentIntent(pt);
+
+
+        Notification notification = builder.build();
+
+        notificationManager.notify(NOTIFICATION_ID, notification);
+
+//        startForegroundService(i);
     }
 
     @Override
