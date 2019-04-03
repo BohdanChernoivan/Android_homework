@@ -8,6 +8,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,8 +30,6 @@ public class ContinueCountDown extends AppCompatActivity implements ContinueMain
     Button buttonIddQd;
     TextView view;
 
-    private NotificationManager notificationManager;
-
     CountDownBroadcastReceiverContinue countDownBroadcastReceiverContinue;
 
     ContinueMainPresenter mainPresenter;
@@ -41,8 +40,6 @@ public class ContinueCountDown extends AppCompatActivity implements ContinueMain
         setContentView(R.layout.activity_continue_count_down);
 
         control();
-
-        notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
         countDownBroadcastReceiverContinue = new CountDownBroadcastReceiverContinue();
 
@@ -70,7 +67,6 @@ public class ContinueCountDown extends AppCompatActivity implements ContinueMain
     public void showNotification(View view) {
 
 //        Intent i = new Intent(this, CountDownService.class);
-
 
 
 
@@ -113,7 +109,8 @@ public class ContinueCountDown extends AppCompatActivity implements ContinueMain
     public void addValueTwenty(View view) {
         Intent i = new Intent(this, CountDownService.class);
         i.putExtra("add20val", 20);
-        startService(i);
+        ContextCompat.startForegroundService(this, i);
+//        startService(i);
     }
 
     @Override
