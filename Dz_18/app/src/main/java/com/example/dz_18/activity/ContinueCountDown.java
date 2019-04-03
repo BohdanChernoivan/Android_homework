@@ -3,12 +3,14 @@ package com.example.dz_18.activity;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.app.TaskStackBuilder;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -69,24 +71,40 @@ public class ContinueCountDown extends AppCompatActivity implements ContinueMain
 
 //        Intent i = new Intent(this, CountDownService.class);
 
-        Intent intent = new Intent(this, ContinueCountDown.class);
-        PendingIntent pt = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
 
 
         Notification.Builder builder = new Notification.Builder(this)
-                .setSmallIcon(R.drawable.ic_brightness_low_black_24dp)
+                .setSmallIcon(R.drawable.ic_launcher_foreground)
 //                .setLargeIcon(BitmapFactory.decodeResource(getApplication().getResources(), R.drawable.ic_brightness_low_black_24dp))
-                .setTicker("new notification")
-                .setWhen(System.currentTimeMillis())
-                .setAutoCancel(true)
+//                .setTicker("new notification")
+//                .setWhen(System.currentTimeMillis())
+//                .setAutoCancel(true)
                 .setContentTitle("Count Down")
-                .setContentText(getString(R.string.iddQd))
-                .setContentIntent(pt);
+                .setContentText(getString(R.string.iddQd));
+//                .setContentIntent(pt);
 
 
-        Notification notification = builder.build();
 
-        notificationManager.notify(NOTIFICATION_ID, notification);
+        Intent intent = new Intent(this, ContinueCountDown.class);
+//        PendingIntent pt = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+
+        TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
+
+        stackBuilder.addParentStack(ContinueCountDown.class);
+        stackBuilder.addNextIntent(intent);
+        PendingIntent resultPending = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        builder.setContentIntent(resultPending);
+
+        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        manager.notify(NOTIFICATION_ID, builder.build());
+
+//        Notification notification = builder.build();
+//
+//        notificationManager.notify(NOTIFICATION_ID, notification);
+
 
 //        startForegroundService(i);
     }

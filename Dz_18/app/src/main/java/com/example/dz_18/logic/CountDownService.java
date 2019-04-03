@@ -37,12 +37,12 @@ public class CountDownService extends IntentService {
 
         num += val;
 
-        for (int i = num; i > 1; i--) {
+        for (; num > 1; num--) {
 
             Thread.sleep(500);
             Intent intent = new Intent();
             intent.setAction(COUNT_DOWN_ACTION);
-            intent.putExtra(COUNTER_KEY, i);
+            intent.putExtra(COUNTER_KEY, num);
             sendBroadcast(intent);
 
         }
