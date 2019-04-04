@@ -31,20 +31,20 @@ public class CountDownService extends IntentService {
     public void onCreate() {
         super.onCreate();
 
-        PowerManager powerManager = (PowerManager) getSystemService(POWER_SERVICE);
+//        PowerManager powerManager = (PowerManager) getSystemService(POWER_SERVICE);
+//
+//        wakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "Myapp:Wakelock");
+//        wakeLock.acquire(5000);
 
-        wakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "Myapp:Wakelock");
-        wakeLock.acquire(5000);
+//        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//            Notification notification = new Notification.Builder(this, CHANNEL_ID)
+//                    .setContentTitle("New notification")
+//                    .setContentText("Surprise")
+//                    .setSmallIcon(R.drawable.ic_brightness_low_black_24dp)
+//                    .build();
+//            startForeground(FOREGROUND_KEY,notification);
 
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            Notification notification = new Notification.Builder(this, CHANNEL_ID)
-                    .setContentTitle("New notification")
-                    .setContentText("Surprise")
-                    .setSmallIcon(R.drawable.ic_brightness_low_black_24dp)
-                    .build();
-            startForeground(FOREGROUND_KEY,notification);
-
-        }
+//        }
     }
 
     @Override
@@ -68,17 +68,17 @@ public class CountDownService extends IntentService {
     public void onDestroy() {
         super.onDestroy();
 
-        wakeLock.release();
+//        wakeLock.release();
     }
 
     private void startCountDown(int val) throws InterruptedException {
 
         num += val;
-
-        Thread thread = new Thread();
-
-
-        new Thread() {
+//
+//        Thread thread = new Thread();
+//
+//
+//        new Thread() {
 //
 //            for (; num > 1; num--) {
 //            Thread.sleep(500);
@@ -88,7 +88,7 @@ public class CountDownService extends IntentService {
 //            sendBroadcast(intent);
 //        }
 
-        }.start();
+//        }.start();
 
         while (num > 1) {
             Thread.sleep(500);
