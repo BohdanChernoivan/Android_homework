@@ -7,11 +7,10 @@
     android:layout_height="match_parent">
 
 
-    <android.support.v7.widget.AppCompatEditText
+    <TextView
         android:id="@+id/showCounterEditText"
         android:layout_gravity="center"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="@string/nullExample" />
+        android:layout_height="wrap_content" />
 
 </FrameLayout>
