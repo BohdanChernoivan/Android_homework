@@ -4,51 +4,55 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.graphics.RectF;
+import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.Toast;
+
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 
 public class ClockFaceView extends View {
 
     Paint paint = new Paint();
 
+    Paint p = new Paint();
 
-    RectF rectf;
+    Handler handler = new Handler();
+
+//    RectF rectf;
 
     public ClockFaceView(Context context) {
         super(context);
-        init();
-
-        rectf = new RectF(120,800,550,1230);
-
+//        rectf = new RectF(120,800,550,1230);
     }
 
     public ClockFaceView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init();
     }
 
     public ClockFaceView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init();
-    }
-
-    private void init() {
-        paint.setColor(Color.BLACK);
     }
 
 
     @Override
-    protected void onDraw(Canvas canvas) {
+    public void invalidate() {
+        super.invalidate();
+    }
+
+    @Override
+    protected void onDraw(final Canvas canvas) {
         super.onDraw(canvas);
 
         canvas.drawARGB(80, 102, 204, 255);
 
+        paint.setColor(Color.BLACK);
         canvas.drawCircle(550, 800, 390, paint);
-
-        paint.setStrokeWidth(10);
-        paint.setColor(Color.WHITE);
-        canvas.drawLine(550, 800, 550, 550, paint);
 
         paint.setStrokeWidth(20);
         paint.setColor(Color.RED);
@@ -63,33 +67,59 @@ public class ClockFaceView extends View {
         canvas.drawText("45", 120, 800, paint);
 
 
-        rectf.offsetTo(800, 150);
-        rectf.inset(0, 0);
-        canvas.drawArc(rectf, 90, 270, true, paint);
-//        canvas.drawArc(500, 200,750, 150,90,170,false,paint);
+        Runnable fun = new Runnable() {
+            @Override
+            public void run() {
+
+                handler.postDelayed(this,1000);
+
+//                p.setStrokeWidth(10);
+//                p.setColor(Color.WHITE);
+
+                Toast.makeText(getContext(), Datetime(), Toast.LENGTH_SHORT).show();
 
 
+
+                /*
+                 * x1 = (int) (x0 + (radius * Math.cos(a)));
+                 * y1 = (int) (y0 + (radius * Math.sin(a)));
+                 * */
+
+//                switch (Datetime()) {
+//
+//                    case "00":
+//                        canvas.drawLine(550, 800, 550, 520, p);
+//                        break;
+//
+//                    case "15":
+//                        canvas.drawLine(550, 800, 850, 800, p);
+//                        break;
+//
+//                    case "30":
+//                        canvas.drawLine(550, 800, 550, 1100, p);
+//                        break;
+//
+//                    case "45":
+//                        canvas.drawLine(550, 800, 250, 800, p);
+//                        break;
+//
+//                    default:
+//                        canvas.drawLine(550, 800, 550, 520, p);
+//                        Toast.makeText(getContext(), Datetime(), Toast.LENGTH_SHORT).show();
+//                }
+            }
+        };
+
+
+        handler.post(fun);
 
     }
 
-
+    public static String Datetime() {
+        Calendar c = Calendar.getInstance();
+        SimpleDateFormat df = new SimpleDateFormat("ss");
+        String formattedDate = df.format(c.getTime());
+        return formattedDate;
+    }
 }
-//    @Override
-//    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-//        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-//        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
-//        int widthSize = MeasureSpec.getSize(widthMeasureSpec);
-//
-//        int heightMode = MeasureSpec.getMode(heightMeasureSpec);
-//        int heightSize = MeasureSpec.getSize(heightMeasureSpec);
-//
-//        if(widthMode == MeasureSpec.EXACTLY && heightMode == MeasureSpec.EXACTLY) {
-//            setMeasuredDimension(widthSize, heightSize);
-//            return;
-//        }
-//
-//        int min = Math.min(widthSize, heightSize);
-//        setMeasuredDimension(min, min);
-//
-//    }
 

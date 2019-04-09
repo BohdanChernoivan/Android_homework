@@ -22,10 +22,5 @@ public class MainActivity extends AppCompatActivity {
         clockFaceView.setBackgroundColor(Color.WHITE);
         setContentView(clockFaceView);
 
-        /*
-        * x1 = (int) (x0 + (radius * Math.cos(a)));
-        * y1 = (int) (y0 + (radius * Math.sin(a)));
-        * */
-
     }
 }
