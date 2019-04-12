@@ -21,7 +21,7 @@
             android:textSize="30sp"
             android:text="@string/nFactorial"/>
 
-        <android.support.v7.widget.AppCompatTextView
+        <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/inputTextView"
@@ -44,19 +44,21 @@
     </LinearLayout>
 
     <ProgressBar
+        android:id="@+id/barProgress"
+        style="?android:attr/progressBarStyleHorizontal"
         android:layout_marginTop="40dp"
         android:layout_gravity="center"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:max="100"/>
+        />
 
     <ImageButton
         android:layout_marginTop="300dp"
         android:layout_gravity="center"
         android:id="@+id/startBtm"
         android:onClick="onClick"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:src="@android:drawable/presence_online" />
 
 </LinearLayout>

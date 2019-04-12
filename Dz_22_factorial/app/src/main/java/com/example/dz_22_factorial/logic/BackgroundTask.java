@@ -1,5 +1,9 @@
 package com.example.dz_22_factorial.logic;
 
+import android.widget.TextView;
+
+import com.example.dz_22_factorial.R;
+
 public abstract class BackgroundTask<Argument, Result> {
 
     abstract Result doInBackground(Argument argument);
@@ -8,8 +12,8 @@ public abstract class BackgroundTask<Argument, Result> {
 
     protected abstract void onProgressUpdate(int progress);
 
-    void publishProgress(int progress) {
-        //
+    protected void publishProgress(int progress) {
+//        TextView textView = find
     }
 
     public void execute(Argument argument) {
