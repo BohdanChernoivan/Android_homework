@@ -1,6 +1,6 @@
 package com.example.dz_22_factorial.ui;
 
-import android.content.Context;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private ProgressBar progressBar;
     private EditText inputTextView;
     private String STR = "TAG";
+    Handler handler;
 
     BackgroundTask<Long, Long> task = new FactorialCalculationTask() {
 
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         protected void onProgressUpdate(int progress) {
             progressBar.setProgress(progress);
         }
+
     };
 
 
@@ -42,6 +44,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         control();
+
+        handler = new Handler() {
+            public void handleMessage(android.os.Message msg) {
+                resultTextView.setText("" + msg.what);
+            }
+        };
 
 //        task.execute(Long.valueOf(inputTextView.getText().toString()));
     }
@@ -53,22 +61,7 @@ public class MainActivity extends AppCompatActivity {
         inputTextView = findViewById(R.id.inputTextView);
     }
 
-    protected class Kfc extends Thread {
-        protected MainActivity context;
 
-        public Kfc(Context context){
-            this.context = (MainActivity) context;
-        }
-
-        public void updateTV(final String str1){
-        context.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                context.resultTextView.setText(str1);
-            }
-        });
-        }
-    }
 
     public void onClick(View view) {
         switch (view.getId()){
@@ -76,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
+
                         for (int i = 0; i <= 100; i += 5) {
                             try {
                                 Thread.sleep(100);
@@ -84,30 +78,48 @@ public class MainActivity extends AppCompatActivity {
                                 break;
                             }
                         }
+
+
                         try {
                             Thread.sleep(500);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
+
                         progressBar.setProgress(0);
 
-                        long n = Long.valueOf(inputTextView.getText().toString()); // Integer.parseInt(q);
+                        long n = Long.valueOf(inputTextView.getText().toString());
+
                         long result = 1;
 
                         Log.i(STR, " INPUT = " + n);
 
                         for (int i = 1; i <= n; i++) {
                             result = result * i;
-//                            int progress = (int) ((double) i / n * 100);
                         }
 
+                        handler.sendEmptyMessage((int)result);
                         Log.i(STR, " Res = " + result);
-//                        resultTextView.setText("ds");
                     }
                 }).start();
 
-                Kfc kfc = new Kfc(this);
-                kfc.updateTV("432");
         }
     }
 }
+
+//    protected class Kfc extends Thread {
+//        protected MainActivity context;
+//
+//        public Kfc(Context context){
+//            this.context = (MainActivity) context;
+//        }
+//
+//        public void updateTV(final String str1){
+//        context.runOnUiThread(new Runnable() {
+//            @Override
+//            public void run() {
+//                context.resultTextView.setText(str1);
+//            }
+//        });
+//        }
+//    }

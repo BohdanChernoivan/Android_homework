@@ -1,7 +1,6 @@
 package com.example.dz_22_factorial.logic;
 
 
-import android.content.Context;
 
 public abstract class BackgroundTask<Argument, Result> {
 
@@ -14,11 +13,11 @@ public abstract class BackgroundTask<Argument, Result> {
     protected abstract void onProgressUpdate(int progress);
 
     protected void publishProgress(int progress) {
-        long p = Long.valueOf(progress);
-        int result = 1;
-        for (int i = 1; i <= p; i++) {
-            result = result * i;
-        }
+//        long p = Long.valueOf(progress);
+//        int result = 1;
+//        for (int i = 1; i <= p; i++) {
+//            result = result * i;
+//        }
     }
 
     public void execute(Argument argument) {
