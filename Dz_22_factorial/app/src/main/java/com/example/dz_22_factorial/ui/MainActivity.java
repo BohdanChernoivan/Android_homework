@@ -1,5 +1,6 @@
 package com.example.dz_22_factorial.ui;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import com.example.dz_22_factorial.R;
 import com.example.dz_22_factorial.logic.BackgroundTask;
 import com.example.dz_22_factorial.logic.FactorialCalculationTask;
+
 
 
 public class MainActivity extends AppCompatActivity {
@@ -51,13 +53,30 @@ public class MainActivity extends AppCompatActivity {
         inputTextView = findViewById(R.id.inputTextView);
     }
 
+    protected class Kfc extends Thread {
+        protected MainActivity context;
+
+        public Kfc(Context context){
+            this.context = (MainActivity) context;
+        }
+
+        public void updateTV(final String str1){
+        context.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                context.resultTextView.setText(str1);
+            }
+        });
+        }
+    }
+
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.startBtm:
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        for (int i = 0; i < 100; i += 5) {
+                        for (int i = 0; i <= 100; i += 5) {
                             try {
                                 Thread.sleep(100);
                                 progressBar.setProgress(i);
@@ -66,7 +85,6 @@ public class MainActivity extends AppCompatActivity {
                             }
                         }
                         try {
-                            progressBar.setProgress(100);
                             Thread.sleep(500);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
@@ -74,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
                         progressBar.setProgress(0);
 
                         long n = Long.valueOf(inputTextView.getText().toString()); // Integer.parseInt(q);
-                        int result = 1;
+                        long result = 1;
 
                         Log.i(STR, " INPUT = " + n);
 
@@ -82,10 +100,14 @@ public class MainActivity extends AppCompatActivity {
                             result = result * i;
 //                            int progress = (int) ((double) i / n * 100);
                         }
+
                         Log.i(STR, " Res = " + result);
-//                        resultTextView.setText(getString(result));
+//                        resultTextView.setText("ds");
                     }
                 }).start();
+
+                Kfc kfc = new Kfc(this);
+                kfc.updateTV("432");
         }
     }
 }
