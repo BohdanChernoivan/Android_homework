@@ -1,32 +1,31 @@
 package com.example.dz_22_factorial.logic;
 
 
+import android.widget.ProgressBar;
+import android.widget.TextView;
+
+import java.util.logging.Handler;
+import java.util.logging.LogRecord;
 
 public abstract class BackgroundTask<Argument, Result> {
 
+
     Thread thread = new Thread();
 
-    abstract Result doInBackground(Argument argument);
 
-    protected abstract void onPostExecute(Result result);
+    public abstract Result doInBackground(Argument argument);
 
-    protected abstract void onProgressUpdate(int progress);
+    public abstract void onPostExecute(Result result);
 
-    protected void publishProgress(int progress) {
-//        long p = Long.valueOf(progress);
-//        int result = 1;
-//        for (int i = 1; i <= p; i++) {
-//            result = result * i;
-//        }
+    public abstract void onProgressUpdate(int progress);
+
+    public void publishProgress(int progress) {
+        ProgressBar progressBar = null;
+        progressBar.setProgress(progress);
     }
 
-    public void execute(Argument argument) {
-//        thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                resultTextView.setText(str1);
-//            }
-//        });
+    public void execute(Argument argument, TextView textView) {
+        textView.setText("" + doInBackground(argument));
     }
 
     boolean isCanceled() {
@@ -38,5 +37,10 @@ public abstract class BackgroundTask<Argument, Result> {
 
     void cancel() {
         thread.interrupted();
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }

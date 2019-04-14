@@ -2,8 +2,9 @@ package com.example.dz_22_factorial.logic;
 
 public abstract class FactorialCalculationTask extends BackgroundTask<Long, Long> {
 
+
     @Override
-    Long doInBackground(Long n) {
+    public Long doInBackground(Long n) {
         long result = 1;
         for (int i = 1; i <= n; i++) {
             result = result * i;
@@ -14,6 +15,7 @@ public abstract class FactorialCalculationTask extends BackgroundTask<Long, Long
         }
         return result;
     }
+
 
     private void demonstrationDelay() {
         try {

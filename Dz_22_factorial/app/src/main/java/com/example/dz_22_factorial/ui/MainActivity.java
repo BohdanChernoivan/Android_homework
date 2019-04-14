@@ -25,16 +25,23 @@ public class MainActivity extends AppCompatActivity {
     BackgroundTask<Long, Long> task = new FactorialCalculationTask() {
 
         @Override
-        protected void onPostExecute(Long result) {
+        public void onPostExecute(Long result) {
             resultTextView.setText(result.toString());
-
         }
+
+
 
         @Override
-        protected void onProgressUpdate(int progress) {
-            progressBar.setProgress(progress);
+        public void onProgressUpdate(int progress) {
+            for (int i = progress; i <= 100; i += 5) {
+                try {
+                    Thread.sleep(100);
+                    progressBar.setProgress(i);
+                } catch (InterruptedException e) {
+                    break;
+                }
+            }
         }
-
     };
 
 
@@ -50,8 +57,6 @@ public class MainActivity extends AppCompatActivity {
                 resultTextView.setText("" + msg.what);
             }
         };
-
-//        task.execute(Long.valueOf(inputTextView.getText().toString()));
     }
 
 
@@ -66,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.startBtm:
+//                task.execute(Long.valueOf(inputTextView.getText().toString()), resultTextView);
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
@@ -106,20 +112,3 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 }
-
-//    protected class Kfc extends Thread {
-//        protected MainActivity context;
-//
-//        public Kfc(Context context){
-//            this.context = (MainActivity) context;
-//        }
-//
-//        public void updateTV(final String str1){
-//        context.runOnUiThread(new Runnable() {
-//            @Override
-//            public void run() {
-//                context.resultTextView.setText(str1);
-//            }
-//        });
-//        }
-//    }
