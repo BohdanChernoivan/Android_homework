@@ -4,9 +4,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Path;
-import android.graphics.RectF;
-import android.os.Handler;
+
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Toast;
@@ -18,17 +16,14 @@ import java.util.Calendar;
 
 public class ClockFaceView extends View {
 
+    Canvas canvas;
     Paint paint = new Paint();
-
     Paint p = new Paint();
+    SecondView secondView;
 
-    Handler handler = new Handler();
-
-//    RectF rectf;
 
     public ClockFaceView(Context context) {
         super(context);
-//        rectf = new RectF(120,800,550,1230);
     }
 
     public ClockFaceView(Context context, AttributeSet attrs) {
@@ -40,14 +35,14 @@ public class ClockFaceView extends View {
     }
 
 
-    @Override
-    public void invalidate() {
-        super.invalidate();
-    }
 
     @Override
     protected void onDraw(final Canvas canvas) {
         super.onDraw(canvas);
+
+        secondView = new SecondView();
+
+        this.canvas = canvas;
 
         canvas.drawARGB(80, 102, 204, 255);
 
@@ -66,18 +61,11 @@ public class ClockFaceView extends View {
         canvas.drawText("30", 550, 1230, paint);
         canvas.drawText("45", 120, 800, paint);
 
+        p.setStrokeWidth(10);
+        p.setColor(Color.WHITE);
+        Toast.makeText(getContext(), Datetime(), Toast.LENGTH_SHORT).show();
 
-        Runnable fun = new Runnable() {
-            @Override
-            public void run() {
-
-                handler.postDelayed(this,1000);
-
-//                p.setStrokeWidth(10);
-//                p.setColor(Color.WHITE);
-
-                Toast.makeText(getContext(), Datetime(), Toast.LENGTH_SHORT).show();
-
+        secondView.draw(canvas, p, Datetime());
 
 
                 /*
@@ -85,35 +73,8 @@ public class ClockFaceView extends View {
                  * y1 = (int) (y0 + (radius * Math.sin(a)));
                  * */
 
-//                switch (Datetime()) {
-//
-//                    case "00":
-//                        canvas.drawLine(550, 800, 550, 520, p);
-//                        break;
-//
-//                    case "15":
-//                        canvas.drawLine(550, 800, 850, 800, p);
-//                        break;
-//
-//                    case "30":
-//                        canvas.drawLine(550, 800, 550, 1100, p);
-//                        break;
-//
-//                    case "45":
-//                        canvas.drawLine(550, 800, 250, 800, p);
-//                        break;
-//
-//                    default:
-//                        canvas.drawLine(550, 800, 550, 520, p);
-//                        Toast.makeText(getContext(), Datetime(), Toast.LENGTH_SHORT).show();
-//                }
-            }
-        };
-
-
-        handler.post(fun);
-
     }
+
 
     public static String Datetime() {
         Calendar c = Calendar.getInstance();
