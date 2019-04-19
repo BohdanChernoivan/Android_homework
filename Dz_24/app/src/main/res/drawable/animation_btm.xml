@@ -5,6 +5,6 @@
 
     <target
         android:animation="@anim/decrease"
-        android:name="decrease_btm"/>
+        android:name="decrease_btm" />
 
 </animated-vector>
