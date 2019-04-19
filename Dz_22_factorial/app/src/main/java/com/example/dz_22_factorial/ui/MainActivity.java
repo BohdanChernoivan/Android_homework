@@ -33,14 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onProgressUpdate(int progress) {
-            for (int i = progress; i <= 100; i += 5) {
-                try {
-                    Thread.sleep(100);
-                    progressBar.setProgress(i);
-                } catch (InterruptedException e) {
-                    break;
-                }
-            }
+            progressBar.setProgress(progress);
         }
     };
 
@@ -51,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         control();
+        task.setHandler(handler);
 
         handler = new Handler() {
             public void handleMessage(android.os.Message msg) {
@@ -64,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         resultTextView = findViewById(R.id.answer);
         progressBar = findViewById(R.id.barProgress);
         inputTextView = findViewById(R.id.inputTextView);
+        handler = new Handler();
     }
 
 
@@ -71,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.startBtm:
-//                task.execute(Long.valueOf(inputTextView.getText().toString()), resultTextView);
+//                task.execute(Long.valueOf(inputTextView.getText().toString()));
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
@@ -108,7 +103,6 @@ public class MainActivity extends AppCompatActivity {
                         Log.i(STR, " Res = " + result);
                     }
                 }).start();
-
         }
     }
 }
