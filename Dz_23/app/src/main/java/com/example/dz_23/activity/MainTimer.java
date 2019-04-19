@@ -1,27 +1,31 @@
 package com.example.dz_23.activity;
 
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.dz_23.R;
 
 public class MainTimer extends AppCompatActivity {
-    ImageButton imgBtm;
-    ImageView imgView;
-    TextView txt_View;
-    EditText editText;
+
+    private ImageView imgView;
+    private TextView txt_View;
+    private EditText editText;
 
     private CountDown countDown;
 
     private long timeElapsed;
     private TextView timeElapsedView;
-    private final long startTime = 300 * 1000;
-    private final long interval = 1000;
+    private long startTime = 300 * 1000;
+    private long interval = 1000;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,14 +36,18 @@ public class MainTimer extends AppCompatActivity {
 
         setDrawable();
 
-        countDown = new CountDown(startTime,interval);
-        countDown.start();
+        if (editText.getText().toString().equals("")) {
+            Toast.makeText(this, "Time not set", Toast.LENGTH_LONG).show();
+        } else {
+            //TODO startTime = Long.valueOf(editText.getText().toString());
+        }
 
-//        imgBtm.setOnClickListener(this::setImgBtm);
+        countDown = new CountDown(startTime, interval);
+        countDown.start();
     }
 
     private void control() {
-//        imgBtm = findViewById(R.id.img_btm);
+
         imgView = findViewById(R.id.img_view);
         editText = findViewById(R.id.edt_txt);
         txt_View = findViewById(R.id.txt_view);
@@ -49,6 +57,7 @@ public class MainTimer extends AppCompatActivity {
     private void setDrawable() {
         imgView.setImageResource(R.drawable.view_timer);
     }
+
 
     public class CountDown extends CountDownTimer {
 
@@ -74,7 +83,5 @@ public class MainTimer extends AppCompatActivity {
 
 }
 
-//    private void setImgBtm(View view) {
-//        Toast.makeText(this, "Time not set", Toast.LENGTH_LONG).show();
-//    }
+
 
