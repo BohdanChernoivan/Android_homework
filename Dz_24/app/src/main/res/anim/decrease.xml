@@ -9,8 +9,8 @@
         android:pivotX="50%"
         android:pivotY="50%"
         android:startOffset="100"
-        android:toXScale="0.5"
-        android:toYScale="0.5" />
+        android:toXScale="0.8"
+        android:toYScale="0.8" />
 
     <translate
         android:fillEnabled="true"
@@ -18,5 +18,5 @@
         android:fromXDelta="0"
         android:fromYDelta="0"
         android:toXDelta="0"
-        android:toYDelta="50" />
+        android:toYDelta="30" />
 </set>
