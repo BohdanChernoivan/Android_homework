@@ -6,21 +6,24 @@
     android:layout_height="match_parent"
     android:orientation="horizontal"
     android:gravity="center"
+    android:background="#6B1F1653"
     tools:context=".MainActivity">
 
     <ImageButton
         android:id="@+id/one_btm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_home"/>
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/ic_home" />
     <ImageButton
         android:id="@+id/two_btm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/ic_favorite"/>
     <ImageButton
         android:id="@+id/three_btm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/ic_settings"/>
 
 
 
