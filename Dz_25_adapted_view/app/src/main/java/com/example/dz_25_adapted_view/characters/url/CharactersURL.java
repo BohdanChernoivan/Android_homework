@@ -4,9 +4,9 @@ import java.util.Random;
 
 public class CharactersURL {
 
-    private final static Random r = new Random();
+    private static final Random r = new Random();
 
-    private final static String[] getSTR = {
+    private static final String[] getSTR = {
             "https://dota2.ru/img/heroes/axe/portrait.jpg",
             "https://dota2.ru/img/heroes/bristleback/portrait.jpg",
             "https://dota2.ru/img/heroes/chaos_knight/portrait.jpg",
@@ -16,7 +16,7 @@ public class CharactersURL {
             "https://dota2.ru/img/heroes/earthshaker/portrait.jpg"
     };
 
-    private final static String[] getDEX = {
+    private static final String[] getDEX = {
             "https://dota2.ru/img/heroes/anti_mage/portrait.jpg",
             "https://dota2.ru/img/heroes/drow_ranger/portrait.jpg",
             "https://dota2.ru/img/heroes/juggernaut/portrait.jpg",
@@ -31,6 +31,6 @@ public class CharactersURL {
     }
 
     public static String getRandomUrlDEX() {
-        return getSTR[r.nextInt(6)];
+        return getDEX[r.nextInt(6)];
     }
 }
