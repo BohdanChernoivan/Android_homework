@@ -1,5 +1,6 @@
 package com.example.dz_25_adapted_view.logic;
 
+import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import com.example.dz_25_adapted_view.R;
 import com.example.dz_25_adapted_view.characters.CharDexterity;
 import com.example.dz_25_adapted_view.characters.CharStrength;
 import com.example.dz_25_adapted_view.characters.Character;
+import com.example.dz_25_adapted_view.logic.diffUtils.CharDiffUtils;
 import com.example.dz_25_adapted_view.logic.sampleHolders.DexHolder;
 import com.example.dz_25_adapted_view.logic.sampleHolders.StrHolder;
 import com.example.dz_25_adapted_view.logic.sampleHolders.sample.CharacterHolder;
@@ -55,7 +57,12 @@ public class AdapterUrl extends RecyclerView.Adapter<CharacterHolder> {
     }
 
     public void updateList(List<Character> characters) {
+        ArrayList<Character> temp = new ArrayList<>();
+        temp.addAll(this.characters);
         this.characters.clear();
         this.characters.addAll(characters);
+
+        DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(new CharDiffUtils(temp, characters));
+        diffResult.dispatchUpdatesTo(this);
     }
 }
