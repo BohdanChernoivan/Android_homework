@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
+import android.view.animation.Animation;
 
 import com.example.dz_25_adapted_view.R;
 import com.example.dz_25_adapted_view.characters.Character;

@@ -1,6 +1,8 @@
 package com.example.dz_25_adapted_view.logic.sampleHolders;
 
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,12 +16,15 @@ public class DexHolder extends CharacterHolder implements View.OnClickListener {
 
     private ImageView img;
     private TextView txt;
+    private Animation animation;
+    boolean isImageScaled = false;
 
     public DexHolder(View itemView) {
         super(itemView);
         itemView.setOnClickListener(this);
         img = itemView.findViewById(R.id.img_dex_char);
         txt = itemView.findViewById(R.id.txt_dex_char);
+        animation = AnimationUtils.loadAnimation(itemView.getContext(), R.anim.increase);
     }
 
     public void bind(CharDexterity dexterity) {
@@ -32,6 +37,9 @@ public class DexHolder extends CharacterHolder implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+        if (!isImageScaled) v.animate().scaleXBy(3f).scaleYBy(3f).setDuration(500);
+        if (isImageScaled) v.animate().scaleX(1f).scaleY(1f).setDuration(500);
+        isImageScaled = !isImageScaled;
         Toast.makeText(v.getContext(), "Clicked Position = " + getAdapterPosition(), Toast.LENGTH_SHORT).show();
     }
 }
