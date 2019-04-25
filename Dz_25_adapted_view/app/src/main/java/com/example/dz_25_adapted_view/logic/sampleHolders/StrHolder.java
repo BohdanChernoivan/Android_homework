@@ -1,6 +1,8 @@
 package com.example.dz_25_adapted_view.logic.sampleHolders;
 
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,12 +16,15 @@ public class StrHolder extends CharacterHolder implements View.OnClickListener{
 
     private ImageView img;
     private TextView txt;
+    private Animation animation;
     boolean isImageScaled = false;
 
     public StrHolder(View itemView) {
         super(itemView);
+        itemView.setOnClickListener(this);
         img = itemView.findViewById(R.id.img_str_char);
         txt = itemView.findViewById(R.id.txt_str_char);
+        animation = AnimationUtils.loadAnimation(itemView.getContext(), R.anim.increase);
     }
 
     public void bind(CharStrength strength) {
