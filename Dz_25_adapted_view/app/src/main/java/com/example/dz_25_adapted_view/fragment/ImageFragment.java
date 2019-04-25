@@ -17,11 +17,13 @@ import com.squareup.picasso.Picasso;
 public class ImageFragment extends Fragment {
 
     private String page;
+    private int pageNumber;
 
-    public static ImageFragment newInstance(String page) {
+    public static ImageFragment newInstance(int page) {
         ImageFragment fragment = new ImageFragment();
         Bundle bundle = new Bundle();
-        bundle.putString("newPage", page);
+        bundle.putInt("num", page);
+//        bundle.putString("newPage", page);
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -29,7 +31,7 @@ public class ImageFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        page = getArguments().getString("newPage");
+//        page = getArguments().getString("newPage");
     }
 
     @Nullable

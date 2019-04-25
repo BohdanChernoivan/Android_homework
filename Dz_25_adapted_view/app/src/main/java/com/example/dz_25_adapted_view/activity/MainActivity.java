@@ -56,3 +56,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(mGridLayout);
     }
 }
+
+/*
+ViewPager pager=(ViewPager)findViewById(R.id.pager);
+        pager.setAdapter(new MeAdapter(getSupportFragmentManager()));*/
