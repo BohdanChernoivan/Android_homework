@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Widgets</string>
+    <string name="registration">Registration!</string>
+    <string name="fill_reg">Hello, complete the registration</string>
+</resources>
