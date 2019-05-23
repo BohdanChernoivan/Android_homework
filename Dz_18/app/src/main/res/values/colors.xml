@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#000000</color>
+    <color name="colorPrimaryDark">#6F598F</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="stateButton">#655D92</color>
+    <color name="two_activity">#8174EE74</color>
+</resources>

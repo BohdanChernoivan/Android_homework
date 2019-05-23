@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Dz_18</string>
+    <string name="start">Начнем отсчет!</string>
+    <string name="count_down">Count down: %1d</string>
+    <string name="waitService">waiting...</string>
+    <string name="clickOn">Click On!</string>
+    <string name="openControl">Открыть контроль</string>
+    <string name="continueCountD">Continue countdown</string>
+    <string name="addYet">+20 yet</string>
+    <string name="iddQd">IddQd</string>
+</resources>
